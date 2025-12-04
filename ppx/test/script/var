@@ -4,7 +4,7 @@ SRC="./ppx/test/cases/$1.res"
 SNAPSHOT="./ppx/test/cases/$1.snapshot"
 
 PPX="./_build/default/ppx/bin/bin.exe"
-BSC="./node_modules/rescript/bsc"
+BSC="./node_modules/.bin/bsc"
 RESCRIPT_REACT="./node_modules/@rescript/react/lib/ocaml"
 RE_FORMALITY="./node_modules/re-formality/lib/ocaml"
 

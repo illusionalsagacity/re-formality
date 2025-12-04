@@ -4,16 +4,19 @@
   "private": true,
   "scripts": {
     "start": "yarn run res:watch",
-    "build": "rescript build -with-deps",
-    "watch": "rescript build -w",
+    "build": "rescript build",
+    "watch": "rescript watch",
     "clean": "rescript clean",
-    "format": "rescript format -all"
+    "format": "rescript format --all"
   },
   "dependencies": {
     "rescript-debounce": "2.0.0"
   },
   "devDependencies": {
-    "@rescript/react": "0.12.1",
-    "rescript": "11.0.1"
+    "@rescript/react": "0.13.1",
+    "rescript": "12.0.0"
+  },
+  "resolutions": {
+    "@rescript/core": "^1.3.0"
   }
 }

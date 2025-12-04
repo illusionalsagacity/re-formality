@@ -28,7 +28,7 @@ module Path = struct
 
   let bsc =
     let open Filename in
-    concat ([ current_dir_name; "node_modules"; "rescript" ] |> join) "bsc"
+    concat ([ current_dir_name; "node_modules"; ".bin" ] |> join) "bsc"
   ;;
 
   let rescript_react =

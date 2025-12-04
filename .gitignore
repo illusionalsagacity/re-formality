@@ -5,11 +5,12 @@ node_modules/
 .envrc
 .merlin
 .bsb.lock
-.parcel-cache
+.rescript.lock
 *.res.js
 yarn-error.log
 .DS_Store
 */dist/
+/_opam
 /_build
 /_release
 /examples/lib/

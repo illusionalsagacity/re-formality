@@ -13,8 +13,8 @@ bug-reports: "https://github.com/MinimaHQ/re-formality/issues"
 dev-repo: "git+https://github.com/MinimaHQ/re-formality.git"
 depends: [
   "ocaml" { = "4.14.1" }
-  "dune" { = "3.11.1" }
-  "ppxlib" { = "0.30.0" }
+  "dune" { = "3.20.2" }
+  "ppxlib" { = "0.28.0" }
   "alcotest" { = "1.7.0" }
 ]
 build: [
