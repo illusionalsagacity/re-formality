@@ -37,10 +37,10 @@ let initialInput: LoginForm.input = {
 @react.component
 let make = () => {
   let form = LoginForm.useForm(~initialInput, ~onSubmit=(output, form) => {
-    Js.log2("Submitted with:", output)
-    Js.Global.setTimeout(() => {
+    Console.log2("Submitted with:", output)
+    setTimeout(() => {
       form.notifyOnSuccess(None)
-      form.reset->Js.Global.setTimeout(3000)->ignore
+      form.reset->setTimeout(3000)->ignore
     }, 500)->ignore
   })
 

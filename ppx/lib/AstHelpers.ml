@@ -50,10 +50,9 @@ module E = struct
         list
   ;;
 
+  (* In ReScript 12, use .contents instead of ! for ref dereference *)
   let ref_ ~loc x =
-    Exp.apply
-      (Exp.ident (Lident "!" |> lid ~loc))
-      [ Nolabel, Exp.ident (Lident x |> lid ~loc) ]
+    Exp.field (Exp.ident (Lident x |> lid ~loc)) (Lident "contents" |> lid ~loc)
   ;;
 
   let record ~loc (xs : (string * expression) list) =
@@ -182,11 +181,11 @@ module E = struct
   ;;
 
   let update_field_of_collection
-    ~in_:record
-    ~(collection : Collection.t)
-    ~with_:value
-    ~loc
-    field_name
+        ~in_:record
+        ~(collection : Collection.t)
+        ~with_:value
+        ~loc
+        field_name
     =
     Exp.record
       [ ( Lident collection.plural |> lid ~loc
@@ -209,11 +208,11 @@ module E = struct
   ;;
 
   let update_field_of_collection2
-    ~in_:(record1, record2)
-    ~(collection : Collection.t)
-    ~with_:value
-    ~loc
-    field_name
+        ~in_:(record1, record2)
+        ~(collection : Collection.t)
+        ~with_:value
+        ~loc
+        field_name
     =
     Exp.record
       [ ( Lident collection.plural |> lid ~loc
@@ -236,12 +235,12 @@ module E = struct
   ;;
 
   let update_ref_field_of_collection
-    ~in_:record
-    ~(collection : Collection.t)
-    ~with_:value
-    ?(index_token = "index")
-    ~loc
-    field_name
+        ~in_:record
+        ~(collection : Collection.t)
+        ~with_:value
+        ?(index_token = "index")
+        ~loc
+        field_name
     =
     Exp.record
       [ ( Lident collection.plural |> lid ~loc

@@ -29,7 +29,7 @@ module SignupForm = %form(
         let minLength = 4
         switch password {
         | "" => Error("Password is required")
-        | _ if password->Js.String.length < minLength =>
+        | _ if password->String.length < minLength =>
           Error(` ${minLength->Int.toString}+ characters, please`)
         | _ => Ok(password)
         }
