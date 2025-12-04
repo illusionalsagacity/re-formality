@@ -713,15 +713,45 @@
     chrome-trace-event "^1.0.2"
     nullthrows "^1.1.1"
 
-"@rescript/core@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rescript/core/-/core-1.0.0.tgz#8626f3b1c09eeb1b4788f42f754e58d3e68041c1"
-  integrity sha512-F5HURYYx8Kp6h1KBiri2nFwGKR16o9/XTCNl2TEWfCwqR+MTzf/lpuPuB6ajnaYytsU0kTUBIFI0DOoLgkDxSg==
+"@rescript/core@1.0.0", "@rescript/core@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@rescript/core/-/core-1.6.1.tgz#159670c94d64a2b8236f46be2bf09a007b1ece08"
+  integrity sha512-vyb5k90ck+65Fgui+5vCja/mUfzKaK3kOPT4Z6aAJdHLH1eljEi1zKhXroCiCtpNLSWp8k4ulh1bdB5WS0hvqA==
 
-"@rescript/react@0.12.1":
-  version "0.12.1"
-  resolved "https://registry.yarnpkg.com/@rescript/react/-/react-0.12.1.tgz#7bddb957a1bc08b944c6597f28549ac410982d64"
-  integrity sha512-ZD7nhDr5FZgLYqRH9s4CNM+LRz/3IMuTb+LH12fd2Akk0xYkYUP+DZveB2VQUC2UohJnTf/c8yPSNsiFihVCCg==
+"@rescript/darwin-arm64@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/darwin-arm64/-/darwin-arm64-12.0.0.tgz#8462ce236354f6bf631384dff62dab986383dd2e"
+  integrity sha512-N2zNj/Uh0zrg8BJGWxdQjYTDf0d2ZV8D+Vmct8xORaUcEZvAkvZb+xA66UxP2QGhWmATcHmBth7oJ48xpWz/Vg==
+
+"@rescript/darwin-x64@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/darwin-x64/-/darwin-x64-12.0.0.tgz#7625fa4b8939957950c2e5f5a12e984e3a8a5e12"
+  integrity sha512-Qx/ao3Fl2lx3rF8mbRsyRK5HGAx8pmzyCdpSIAaUun5wLBnsJbNqgvqUH7VeI2TwaczHvcIljrYmnB7T5LJdFQ==
+
+"@rescript/linux-arm64@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/linux-arm64/-/linux-arm64-12.0.0.tgz#2e0f3c8dd61973ebd27482dbb8ea7c02858c4481"
+  integrity sha512-H65csj/0uqqjYy235m0h5CFxbrsas6RoVfjy5Xjf91Vyg/r5R/QIGQvhMtFvl4QojYsa1wXzXGcujwXh+S15xQ==
+
+"@rescript/linux-x64@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/linux-x64/-/linux-x64-12.0.0.tgz#09e6dd043de09b5e0aa632103b333c4b92e6ce72"
+  integrity sha512-WizQwyfMadxF096foZYU3I4zxcnNIc9XP7TP4fqdfe0v6OvQ5yHMI/uIfOsJ1GfNALce2UxvgS0pn67uxc55uA==
+
+"@rescript/react@0.13.1":
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/@rescript/react/-/react-0.13.1.tgz#19a90b2de39e4742bf73f834fe795fa9db5e06d5"
+  integrity sha512-VIWtu/sAJyYmDVoAhit0LHDYQrW6RqZ6z8sh8san5cjEAT4klv8JWkiaSK3FGUfooUDkGUXXgKTkqyj8zRR21w==
+
+"@rescript/runtime@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/runtime/-/runtime-12.0.0.tgz#f33c6c6709cfc06551ada3a42a9def5954317b5f"
+  integrity sha512-STRbYHT5rnW61vWn2+Bdtj620XaprnoBSbPbkvOYZ+Zs8nfqtpBjhNw+JNpGQLXf73crk6MhxFGPxL2o5vb8TQ==
+
+"@rescript/win32-x64@12.0.0":
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/@rescript/win32-x64/-/win32-x64-12.0.0.tgz#2a0194d80c14c8204422682a97720b01f4b5f2b1"
+  integrity sha512-kkqj4kQGbni5YglWoPm76M6hUuzKJHDEiLce5EZxW2Q4FrkS9dNRgm02c2Ck1cz/uKCS3m+ZoKQGIMMXTvo5Jw==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -2583,13 +2613,6 @@ request@^2.88.0:
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
-rescript-classnames@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/rescript-classnames/-/rescript-classnames-7.0.0.tgz#bf30d65fff325cdc672b8659fb1e52dc43860fa7"
-  integrity sha512-/VQs2a/AjcIEAUV40+mIaWuOMQGxIw50qPCX44tLl+yTMb7/7lad47+jlxRdixSTO4HsaAu8y8rA6hEfkqBCKg==
-  dependencies:
-    "@rescript/core" "1.0.0"
-
 rescript-debounce@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/rescript-debounce/-/rescript-debounce-2.0.0.tgz#ca6ceecaf909b6b24eb51d6e7558878d6c278d7a"
@@ -2597,10 +2620,18 @@ rescript-debounce@2.0.0:
   dependencies:
     "@rescript/core" "1.0.0"
 
-rescript@11.0.1:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/rescript/-/rescript-11.0.1.tgz#c74af134dc8a16d152169b2456d0720324835f54"
-  integrity sha512-7T4PRp/d0+CBNnY6PYKffFqo9tGZlvnZpboF/n+8SKS+JZ6VvXJO7W538VPZXf3EYx1COGAWWvkF9e/HgSAqHg==
+rescript@12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/rescript/-/rescript-12.0.0.tgz#583ce5aa518b35b451f0b95bb18d90bdb9f59503"
+  integrity sha512-DGcZI2L5W0c6FuEnspLE0MIe1UtTt1VsW/vQfzBFCEBxSsQtoA6YRHUB8Puwnb30PHqZiFK1ADhn6UgA8LWK0A==
+  dependencies:
+    "@rescript/runtime" "12.0.0"
+  optionalDependencies:
+    "@rescript/darwin-arm64" "12.0.0"
+    "@rescript/darwin-x64" "12.0.0"
+    "@rescript/linux-arm64" "12.0.0"
+    "@rescript/linux-x64" "12.0.0"
+    "@rescript/win32-x64" "12.0.0"
 
 resolve-from@^4.0.0:
   version "4.0.0"

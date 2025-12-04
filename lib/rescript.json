@@ -1,18 +1,11 @@
 {
-    "name": "re-formality",
-    "sources": [
-        "src"
-    ],
-    "bs-dependencies": [
-        "@rescript/react",
-        "rescript-debounce"
-    ],
-    "bsc-flags": [
-        "-open Belt"
-    ],
-    "package-specs": {
-        "module": "es6",
-        "in-source": true
-    },
-    "suffix": ".res.js"
+  "name": "re-formality",
+  "sources": ["src"],
+  "dependencies": ["@rescript/react", "rescript-debounce"],
+  "compiler-flags": ["-open Belt"],
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".res.js"
 }

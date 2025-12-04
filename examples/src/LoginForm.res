@@ -8,10 +8,10 @@ module LoginForm = %form(
     email: {
       strategy: OnFirstSuccessOrFirstBlur,
       validate: ({email}) => {
-        let emailRegex = %re(`/.*@.*\..+/`)
+        let emailRegex = /.*@.*\..+/
         switch email {
         | "" => Error("Email is required")
-        | _ as value if !(emailRegex->Js.Re.test_(value)) => Error("Email is invalid")
+        | _ as value if !(emailRegex->RegExp.test(value)) => Error("Email is invalid")
         | _ => Ok(email)
         }
       },
