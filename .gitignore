@@ -10,6 +10,7 @@ node_modules/
 yarn-error.log
 .DS_Store
 */dist/
+/_opam
 /_build
 /_release
 /examples/lib/
