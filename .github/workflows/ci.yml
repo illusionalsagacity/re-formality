@@ -75,7 +75,7 @@ jobs:
       - validate
     strategy:
       matrix:
-        os: [macos-14, macos-15]
+        os: [macos-13, macos-15]
         ocaml-version: [4.14.1]
         node-version: [20.x]
 
@@ -103,7 +103,7 @@ jobs:
         run: yarn install
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@v3
         with:
           ocaml-compiler: ${{ matrix.ocaml-version }}
 
@@ -135,23 +135,31 @@ jobs:
           path: _build/default/ppx/bin/bin.exe
 
   build_linux:
-    name: Build on ${{ matrix.container-os }}
-    runs-on: ${{ matrix.host-os }}
+    name: Build on Linux ${{ matrix.arch }}
+    runs-on: ${{ matrix.runner }}
     if: startsWith(github.ref, 'refs/tags/v')
     needs:
       - validate
     strategy:
       matrix:
-        host-os: [ubuntu-22.04]
-        container-os: [linux-alpine-3]
+        include:
+          - runner: ubuntu-22.04
+            arch: x64
+            artifact-name: linux-x64
+          - runner: ubuntu-22.04-arm
+            arch: arm64
+            artifact-name: linux-arm64
         ocaml-version: [4.14.1]
         node-version: [20.x]
-    # container:
-    #   image: alex35mil/alpine-ocaml-opam-node-yarn:alpine-3.19-ocaml-4.14-node-20.20-yarn-1.22-o5gm
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+
+      - name: Setup Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
 
       - name: Print Yarn cache
         id: print-yarn-cache
@@ -162,19 +170,21 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ${{ steps.print-yarn-cache.outputs.yarn-cache }}
-          key: ${{ matrix.container-os }}-yarn-${{ hashFiles('yarn.lock', '*/yarn.lock') }}
+          key: linux-${{ matrix.arch }}-yarn-${{ hashFiles('yarn.lock', '*/yarn.lock') }}
 
       - name: Install Yarn deps
         run: yarn install
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
-        run: opam init -a --disable-sandboxing --compiler=${{ matrix.ocaml-version }}
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: ${{ matrix.ocaml-version }}
 
       - name: Install Opam deps
         run: opam install . --deps-only --with-test
 
       - name: Build PPX
-        run: opam exec -- dune build --profile static
+        run: opam exec -- dune build
 
       - name: Build ReScript lib
         run: |
@@ -183,10 +193,18 @@ jobs:
           cd ../examples
           yarn run build
 
+      - name: Run PPX tests
+        run: opam exec -- dune exec test.exe
+
+      - name: Run integration tests
+        run: |
+          cd specs
+          yarn run test
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.container-os }}
+          name: ${{ matrix.artifact-name }}
           path: _build/default/ppx/bin/bin.exe
 
   build_windows:
@@ -235,14 +253,14 @@ jobs:
           git commit -m "Patch opam deps"
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
-        uses: ocaml/setup-ocaml@v2
+        uses: ocaml/setup-ocaml@v3
         with:
           ocaml-compiler: ${{ matrix.ocaml-version }}
 
       - name: Pin Opam deps
         run: |
-          opam pin add dune https://github.com/ocaml/dune.git#7cbb0e7 # 3.11.1
-          opam pin add ppxlib https://github.com/ocaml-ppx/ppxlib.git#f0496c9 # 0.30.0
+          opam pin add dune https://github.com/ocaml/dune.git#1e54fd3 # 3.20.2
+          opam pin add ppxlib https://github.com/ocaml-ppx/ppxlib.git#e027461 # 0.28.0
           opam pin add alcotest https://github.com/mirage/alcotest.git#927088f # 1.7.0
 
       - name: Install Opam deps
@@ -280,7 +298,7 @@ jobs:
       - name: Setup Node ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version: 20.x
 
       - name: Download macOS x86 artifacts
         uses: actions/download-artifact@v4
@@ -291,14 +309,20 @@ jobs:
       - name: Download macOS ARM artifacts
         uses: actions/download-artifact@v4
         with:
-          name: macos-14
+          name: macos-15
           path: _bin/darwin/arm
 
-      - name: Download Linux artifacts
+      - name: Download Linux x64 artifacts
         uses: actions/download-artifact@v4
         with:
-          name: linux-alpine-3
-          path: _bin/linux
+          name: linux-x64
+          path: _bin/linux/x64
+
+      - name: Download Linux arm64 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-arm64
+          path: _bin/linux/arm64
 
       - name: Download Windows artifacts
         uses: actions/download-artifact@v4
@@ -311,7 +335,8 @@ jobs:
           mkdir -p _release/bin
           mv _bin/darwin/intel/bin.exe _release/bin/re-formality-ppx-darwin-x64.exe
           mv _bin/darwin/arm/bin.exe _release/bin/re-formality-ppx-darwin-arm64.exe
-          mv _bin/linux/bin.exe _release/bin/re-formality-ppx-linux-x64.exe
+          mv _bin/linux/x64/bin.exe _release/bin/re-formality-ppx-linux-x64.exe
+          mv _bin/linux/arm64/bin.exe _release/bin/re-formality-ppx-linux-arm64.exe
           mv _bin/windows/bin.exe _release/bin/re-formality-ppx-win-x64.exe
           rm -rf _bin
 
