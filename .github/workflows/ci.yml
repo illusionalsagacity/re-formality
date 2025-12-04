@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-22.04]
         ocaml-version: [4.14.1]
         node-version: [20.x]
 
@@ -75,9 +75,9 @@ jobs:
       - validate
     strategy:
       matrix:
-        os: [macos-13, macos-14]
+        os: [macos-14, macos-15]
         ocaml-version: [4.14.1]
-        node-version: [16.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repo
@@ -142,12 +142,12 @@ jobs:
       - validate
     strategy:
       matrix:
-        host-os: [ubuntu-latest]
+        host-os: [ubuntu-22.04]
         container-os: [linux-alpine-3]
         ocaml-version: [4.14.1]
-        node-version: [16.x]
-    container:
-      image: alex35mil/alpine-ocaml-opam-node-yarn:alpine-3.19-ocaml-4.14-node-16.20-yarn-1.22-o5gm
+        node-version: [20.x]
+    # container:
+    #   image: alex35mil/alpine-ocaml-opam-node-yarn:alpine-3.19-ocaml-4.14-node-20.20-yarn-1.22-o5gm
 
     steps:
       - name: Checkout repo
@@ -199,7 +199,7 @@ jobs:
       matrix:
         os: [windows-latest]
         ocaml-version: [4.14.1]
-        node-version: [16.x]
+        node-version: [20.x]
 
     steps:
       - name: Checkout repo
