@@ -70,8 +70,8 @@ jobs:
           yarn run test
 
   build_macos:
-    name: Build on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Build on ${{ matrix.runner }}
+    runs-on: ${{ matrix.runner }}
     needs:
       - validate
     strategy:
