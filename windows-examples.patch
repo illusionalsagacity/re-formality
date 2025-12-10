@@ -1,0 +1,13 @@
+diff --git a/examples/rescript.json b/examples/rescript.json
+index 1234567..abcdefg 100644
+--- a/examples/rescript.json
++++ b/examples/rescript.json
+@@ -6,7 +6,7 @@
+   "jsx": {
+     "version": 4
+   },
+-  "ppx-flags": ["../_build/default/ppx/bin/bin.exe"],
++  "ppx-flags": ["..\\_build\\default\\ppx\\bin\\bin.exe"],
+   "package-specs": {
+     "module": "es6",
+     "in-source": true

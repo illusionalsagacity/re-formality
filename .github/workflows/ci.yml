@@ -276,6 +276,9 @@ jobs:
       - name: Build PPX
         run: opam exec -- dune build
 
+      - name: Apply Windows path patch for examples/rescript.json
+        run: git apply windows-examples.patch
+
       - name: Build ReScript lib
         run: |
           cd lib
