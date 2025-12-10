@@ -241,15 +241,15 @@ jobs:
       - name: Install Yarn deps
         run: yarn install
 
-      - name: Apply Opam deps patch
-        run: |
-          $lastCommitterName = git log -1 --pretty=format:'%an'
-          $lastCommitterEmail = git log -1 --pretty=format:'%ae'
-          git config user.name "$lastCommitterName"
-          git config user.email "$lastCommitterEmail"
-          git apply windows.patch
-          git add .
-          git commit -m "Patch opam deps"
+      # - name: Apply Opam deps patch
+      #   run: |
+      #     $lastCommitterName = git log -1 --pretty=format:'%an'
+      #     $lastCommitterEmail = git log -1 --pretty=format:'%ae'
+      #     git config user.name "$lastCommitterName"
+      #     git config user.email "$lastCommitterEmail"
+      #     git apply windows.patch
+      #     git add .
+      #     git commit -m "Patch opam deps"
 
       - name: Setup OCaml ${{ matrix.ocaml-version }}
         uses: ocaml/setup-ocaml@v3
