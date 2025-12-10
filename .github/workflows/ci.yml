@@ -276,25 +276,10 @@ jobs:
       - name: Build PPX
         run: opam exec -- dune build --verbose
 
-      - name: Apply Windows path patch for examples/rescript.json
-        run: git apply windows-examples.patch
-
-      - name: Debug - Show directory structure
+      - name: Copy PPX binary to examples folder and patch rescript.json
         run: |
-          echo "=== Current directory ==="
-          pwd
-          echo ""
-          echo "=== Root directory contents ==="
-          dir
-          echo ""
-          echo "=== _build directory structure ==="
-          dir _build /s /b
-          echo ""
-          echo "=== examples directory contents ==="
-          dir examples
-          echo ""
-          echo "=== examples/rescript.json contents ==="
-          type examples\rescript.json
+          copy _build\default\ppx\bin\bin.exe examples\ppx.exe
+          git apply windows-examples.patch
         shell: cmd
 
       - name: Build ReScript lib

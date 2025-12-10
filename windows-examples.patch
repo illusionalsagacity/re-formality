@@ -7,7 +7,7 @@ index 1234567..abcdefg 100644
      "version": 4
    },
 -  "ppx-flags": ["../_build/default/ppx/bin/bin.exe"],
-+  "ppx-flags": ["..\\_build\\default\\ppx\\bin\\bin.exe"],
++  "ppx-flags": ["./ppx.exe"],
    "package-specs": {
      "module": "es6",
      "in-source": true
